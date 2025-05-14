@@ -94,9 +94,9 @@ function generateReport(listOfDatas) {
 • Renovações: ................... *${String(listOfDatas[5]).padStart(2, "0")}*
 
 💰 *Financeiro*  
-• 9Caixa: ................... *${listOfDatas[6]}*  
-• 9Retiradas: ............ *${listOfDatas[7]}*  
-• 9Caixa enviado: .... *${listOfDatas[8]}*
+• Caixa: ................... *${listOfDatas[6]}*  
+• Retiradas: ............ *${listOfDatas[7]}*  
+• Caixa enviado: .... *${listOfDatas[8]}*
 
 📝 *Informações*  
 • Devendo: 
