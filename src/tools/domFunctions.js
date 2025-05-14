@@ -35,9 +35,12 @@ export function copyInformations() {
   }, 3000)
 
   generateReport(valuesReceived)
-
 }
 
 export function clearRecepcionistName() {
   document.querySelector("#recepcionist-name").value = ""
+}
+
+export function addAtRoot(element){
+  document.querySelector(".root").appendChild(element)
 }
