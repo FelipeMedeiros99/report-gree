@@ -122,6 +122,11 @@ function copyInformations() {
     valuesReceived.push(text.value);
   }
 
+  document.querySelector(".copy-button").innerText = "Copiado ✅"
+  setTimeout(()=>{
+      document.querySelector(".copy-button").innerText = "Copiar"
+  }, 3000)
+
   generateReport(valuesReceived)
 
 }

@@ -175,7 +175,7 @@ button:hover{
 
 .copy-button{
   height: 2rem;
-  width: 4rem;
+  width: 7rem;
   border-radius: var(--border-radius);
   font-weight: 700;
 }
