@@ -88,22 +88,21 @@ function generateReport(listOfDatas) {
 👤 *Recepcionista:* ${listOfDatas[0]}
 
 🏨 *Operacional*  
-• Ocupação total: *${listOfDatas[2]}*  
-• Previsão de reservas: *${listOfDatas[3]}*  
-• Check-ins: *${listOfDatas[4]}*  
-• Renovações: *${listOfDatas[5]}*
+• Ocupação total: .............. *${listOfDatas[2]}*  
+• Previsão de reservas: ... *${listOfDatas[3]}*  
+• Check-ins: ....................... *${listOfDatas[4]}*  
+• Renovações: ................... *${listOfDatas[5]}*
 
 💰 *Financeiro*  
-• Caixa: *${listOfDatas[6]}*  
-• Retiradas: *${listOfDatas[7]}*  
-• Caixa enviado: *${listOfDatas[8]}*
+• Caixa: ................... *${listOfDatas[6]}*  
+• Retiradas: ............ *${listOfDatas[7]}*  
+• Caixa enviado: .... *${listOfDatas[8]}*
 
 📝 *Informações*  
 • Devendo: 
 ${listOfDatas[9].split("\n").map((text)=>textProcessor(text)).join("")}
-
 • Observações:  
-${listOfDatas[10].split("\n").map((text)=>textProcessor(text)).join("")}
+${listOfDatas[10].split("\n").map((text)=>textProcessor(text)).join("")}  
 `
 
   navigator.clipboard.writeText(report)
