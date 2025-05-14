@@ -8,14 +8,14 @@ export default function renderMoneyBox() {
       document.querySelector(".box-inputs-container").innerHTML += `
       <div class="container-input financy-input-container">
         <label for="${label}">${label}</label>
-        <input type="text" id=${label} class="input-box" oninput="numericFloatInputOnChange(this)" value="R$ 0,00"/>
+        <input type="text" id=${label} class="input-box" oninput="convertToMnoneyFormat(this)" value="R$ 0,00"/>
       </div>
       `
     }else{
       document.querySelector(".root").innerHTML += `
         <div class="container-input financy-input-container">
         <label for="${label.replace(" ", "_")}">${label}</label>
-        <input type="text" id=${label.replace(" ", "_")}  class="input-box" oninput="numericFloatInputOnChange(this)" value="R$ 0,00"/>
+        <input type="text" id=${label.replace(" ", "_")}  class="input-box" oninput="convertToMnoneyFormat(this)" value="R$ 0,00"/>
       </div>`
     }
   }
