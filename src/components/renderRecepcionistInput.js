@@ -1,4 +1,4 @@
-export default function recepcionistInput() {
+export default function renderRecepcionistInput() {
   const recepcionistList = getRecepcionistsNames()
 
   document.querySelector(".root").innerHTML += `

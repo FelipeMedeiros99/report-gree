@@ -1,4 +1,4 @@
-export default function moneyBox() {
+export default function renderMoneyBox() {
 
   const labels = ["Caixa", "Retiradas", "Caixa enviado"]
   document.querySelector(".root").innerHTML += `<div class="box-inputs-container"></div>`

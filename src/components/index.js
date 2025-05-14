@@ -1,21 +1,21 @@
-import calendar from "./calendar";
-import copyButton from "./copyButton";
-import counterInputs from "./counterInput";
-import line from "./line";
-import moneyBox from "./moneyBox";
-import obsInput from "./obsInput";
-import recepcionistInput from "./recepcionistInput";
+import renderRecepcionistInput from "./renderRecepcionistInput";
+import renderCalendar from "./renderCalendar";
+import renderCopyButton from "./renderCopyButton";
+import renderCounterInputs from "./renderCounterInput";
+import renderLine from "./renderLine";
+import renderMoneyBox from "./renderMoneyBox";
+import renderTextAreaObservations from "./renderTextAreaObservations";
 
 export default function  main() {
-  recepcionistInput();
-  calendar();
-  line();
-  counterInputs();
-  line()
-  moneyBox();
-  line()
-  obsInput();
-  copyButton();
+  renderRecepcionistInput();
+  renderCalendar();
+  renderLine();
+  renderCounterInputs();
+  renderLine()
+  renderMoneyBox();
+  renderLine()
+  renderTextAreaObservations();
+  renderCopyButton();
 }
 
 main();

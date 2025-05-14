@@ -1,4 +1,4 @@
-export default function obsInput() {
+export default function renderTextAreaObservations() {
   const labels = ["Devendo", "Observações"]
   for (const label of labels) {
     document.querySelector(".root").innerHTML += `
