@@ -88,15 +88,15 @@ function generateReport(listOfDatas) {
 👤 *Recepcionista:* ${listOfDatas[0]}
 
 🏨 *Operacional*  
-• \`\`\`Ocupação total: ________\`\`\` *${String(listOfDatas[2]).padStart(2, "0")}*
-• \`\`\`Previsão de reservas: __\`\`\` *${String(listOfDatas[3]).padStart(2, "0")}*
-• \`\`\`Check-ins: _____________\`\`\` *${String(listOfDatas[4]).padStart(2, "0")}*
-• \`\`\`Renovações: ____________\`\`\` *${String(listOfDatas[5]).padStart(2, "0")}*
+• Ocupação total: .............. *${String(listOfDatas[2]).padStart(2, "0")}*
+• Previsão de reservas: .... *${String(listOfDatas[3]).padStart(2, "0")}*
+• Check-ins: ....................... *${String(listOfDatas[4]).padStart(2, "0")}*
+• Renovações: ................... *${String(listOfDatas[5]).padStart(2, "0")}*
 
 💰 *Financeiro*  
-• \`\`\`Caixa: ____________\`\`\` *${listOfDatas[6]}*  
-• \`\`\`Retiradas: ________\`\`\` *${listOfDatas[7]}*  
-• \`\`\`Caixa enviado: ____\`\`\` *${listOfDatas[8]}*
+• 9Caixa: ................... *${listOfDatas[6]}*  
+• 9Retiradas: ............ *${listOfDatas[7]}*  
+• 9Caixa enviado: .... *${listOfDatas[8]}*
 
 📝 *Informações*  
 • Devendo: 
