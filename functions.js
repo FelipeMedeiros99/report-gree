@@ -78,7 +78,9 @@ function updateNames() {
   }
 }
 
-
+function textProcessor(text){
+  return text.length>0?`_${text}_\n` :`\n`
+}
 
 function generateReport(listOfDatas) {
   const report = `
@@ -98,13 +100,11 @@ function generateReport(listOfDatas) {
 
 📝 *Informações*  
 • Devendo: 
-_${listOfDatas[9]}_
+${listOfDatas[9].split("\n").map((text)=>textProcessor(text)).join("")}
 
 • Observações:  
-_${listOfDatas[10]}_
+${listOfDatas[10].split("\n").map((text)=>textProcessor(text)).join("")}
 `
-
-
 
   navigator.clipboard.writeText(report)
 }
