@@ -6,6 +6,7 @@ export default function renderRecepcionistInput() {
   const recepcionistList = getRecepcionistsNames();
   
   const container = document.createElement("div");
+  
   container.className = "recepcionist-container container-input"
   
   container.innerHTML = `  
