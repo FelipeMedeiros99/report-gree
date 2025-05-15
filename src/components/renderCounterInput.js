@@ -1,6 +1,6 @@
 import { addAtRoot, setOnlyNumbersOnInput } from "../tools/domFunctions.js";
 
-function generateComponent(){
+function generateComponent() {
   const inputsLabels = {
     "Ocupação total": 50,
     "Previsão reservas": 0,
@@ -8,12 +8,9 @@ function generateComponent(){
     "Renovação": 0
   }
 
-  
   const container = document.createElement("div");
-
   container.className = "counter-inputs-container container-input";
-  
-  
+
   for (const inputLabel of Object.keys(inputsLabels)) {
     const subContainer = document.createElement("div");
     subContainer.className = "numeric-input";
@@ -28,42 +25,38 @@ function generateComponent(){
     `
     
     container.appendChild(subContainer)
-    
   }
 
   addAtRoot(container)
 }
 
-export function changeInputValue(component, operation) {
+function changeInputValue(component, operation) {
 
   const input = component.querySelector("input");
-
   let inputValue = Number(input.value) || 0;
 
-  input.value = 
-  operation === "up" 
-    ?inputValue+1
-    :inputValue > 0 
-      ?inputValue-1
-      :inputValue
-  ;
+  input.value =
+    operation === "up"
+      ? inputValue + 1
+      : inputValue > 0
+        ? inputValue - 1
+        : inputValue
+    ;
 }
 
-function addEventAtComponents(){
+function addEventAtComponents() {
   const inputContainers = document.querySelectorAll(".numeric-input");
-  
-  
-  for(let inputContainer of inputContainers){
+
+  for (let inputContainer of inputContainers) {
 
     const buttonDown = inputContainer.querySelector(".down")
-    buttonDown.addEventListener("click", ()=>changeInputValue(inputContainer, "down"))
+    buttonDown.addEventListener("click", () => changeInputValue(inputContainer, "down"))
 
     const input = inputContainer.querySelector(".input-number")
-    input.addEventListener("input", (e)=>setOnlyNumbersOnInput(e.currentTarget))
-  
+    input.addEventListener("input", (e) => setOnlyNumbersOnInput(e.currentTarget))
+
     const buttonUp = inputContainer.querySelector(".up")
-    buttonUp.addEventListener("click", ()=>changeInputValue(inputContainer, "up"))
-    
+    buttonUp.addEventListener("click", () => changeInputValue(inputContainer, "up"))
   }
 }
 
