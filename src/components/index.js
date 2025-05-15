@@ -17,22 +17,6 @@ export default function  main() {
   renderLine();
   renderTextAreaObservations(); 
   renderCopyButton();
-
-  // const components = [
-    // renderRecepcionistInput, 
-    // renderCalendar, 
-    // renderCounterInputs, 
-    // renderMoneyBox, 
-    // renderTextAreaObservations, 
-    // renderCopyButton
-  // ]
-
-  // for(let i=0; i<components.length; i++){
-  //   components[i]();
-  //   if(i !== 0 && i <5){
-  //     renderLine()
-  //   }
-  // }
 }
 
 main();
