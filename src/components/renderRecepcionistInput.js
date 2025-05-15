@@ -1,4 +1,4 @@
-import { addAtRoot } from "../tools/listenerEvents";
+import { addAtRoot } from "../tools/domFunctions";
 import { getRecepcionistsNames } from "../tools/storageFunctions";
 
 export default function renderRecepcionistInput() {
