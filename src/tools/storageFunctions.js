@@ -3,7 +3,7 @@ const storageName = 'reportSystem'
 export function getRecepcionistsNames() {
   let recepcionistList = localStorage.getItem(storageName);
   if (!recepcionistList) localStorage.setItem(storageName, "[]");
-  return recepcionistList.sort() ? JSON.parse(recepcionistList) : "[]"
+  return recepcionistList ? JSON.parse(recepcionistList).sort() : "[]"
 }
 
 export function saveNewRecepcionist(name) {
