@@ -1,4 +1,7 @@
+import { addAtRoot } from "../tools/domFunctions";
 
 export default function renderLine(){
-  document.querySelector(".root").innerHTML += `<hr/>`
+  const line = document.createElement("hr");
+  addAtRoot(line);
+
 }
