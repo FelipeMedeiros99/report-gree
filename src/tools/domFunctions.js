@@ -1,3 +1,9 @@
+import { filterNumbers } from "./numberFunctions.js"
+
+export function setOnlyNumbersOnInput(input) {
+  let arrayValues = filterNumbers(input.value);
+  input.value = arrayValues;
+}
 
 export function calculateTotalValue() {
   const valueReceived = convertToFloat(document.querySelector("#Caixa").value);
