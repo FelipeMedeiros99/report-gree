@@ -1,22 +1,58 @@
-export default function renderMoneyBox() {
+import { addAtRoot } from "../tools/domFunctions";
+import { convertToFloat, filterNumbers } from "../tools/numberFunctions";
 
+function createElement(){
   const labels = ["Caixa", "Retiradas", "Caixa enviado"]
-  document.querySelector(".root").innerHTML += `<div class="box-inputs-container"></div>`
+  let total;
 
+  const container = document.createElement("div");
+  container.className = "box-inputs-container";
+  
   for (const label of labels) {
     if(label !== "Caixa enviado"){
-      document.querySelector(".box-inputs-container").innerHTML += `
-      <div class="container-input financy-input-container">
-        <label for="${label}">${label}</label>
-        <input type="text" id=${label} class="input-box" oninput="convertToMnoneyFormat(this)" value="R$ 0,00"/>
-      </div>
+      container.innerHTML += `
+        <div class="container-input financy-input-container">
+          <label for="${label}">${label}</label>
+          <input type="text" id=${label} class="input-box" value="R$ 0,00"/>
+        </div>
       `
     }else{
-      document.querySelector(".root").innerHTML += `
-        <div class="container-input financy-input-container">
-        <label for="${label.replace(" ", "_")}">${label}</label>
-        <input type="text" id=${label.replace(" ", "_")}  class="input-box" oninput="convertToMnoneyFormat(this)" value="R$ 0,00"/>
-      </div>`
+      total = document.createElement("div");
+      total.className = "container-input financy-input-container"
+      const formatedLabel = label.replace(" ", "_");
+      total.innerHTML = `
+        <label for="${formatedLabel}">${label}</label>
+        <input type="text" id=${formatedLabel}  class="input-box" value="R$ 0,00"/>
+      `
     }
+    
   }
+  addAtRoot(container)
+  addAtRoot(total)
+}
+
+function calculateTotalValue() {
+  const valueReceived = convertToFloat(document.querySelector("#Caixa").value);
+  const valueRemoved = convertToFloat(document.querySelector("#Retiradas").value)
+  const total = valueReceived - valueRemoved
+  document.querySelector("#Caixa_enviado").value = "R$ " + String(total.toFixed(2)).replace(".", ",");
+}
+
+function convertToMnoneyFormat(input) {
+  let value = filterNumbers(input.value);
+  value = (Number(value / 100)).toFixed(2)
+  input.value = "R$ " + String(value).replace(".", ",")
+  calculateTotalValue()
+}
+
+function addEventListenerAtComponents(){
+  const inputs = document.querySelectorAll(".financy-input-container .input-box");
+  for(let input of inputs){
+    input.addEventListener("input", ()=>convertToMnoneyFormat(input));
+  }
+}
+
+export default function renderMoneyBox() {
+  createElement();
+  addEventListenerAtComponents();
 }
