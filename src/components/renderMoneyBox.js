@@ -53,22 +53,25 @@ function addEventListenerAtComponents() {
   }
 }
 
-function getBoxValueAndAddAtCalculator(){
-  const boxValue = document.querySelector("#Caixa").querySelector("input").value;
-  console.log("aqui : ", boxValue)
+function getBoxValueAndAddAtCalculator(parent){
+  const input =  parent.querySelector("input");
+  let value = input.value;
+  value = eval(value.replace("R$","").trim().replace(",", ".") || "")
   const display = document.querySelector(".display-input");
-  display.value = eval(boxValue.replace("R$","").trim().replace(",", "."));
+  display.value = value===0?"":value;
 }
 
-function openCalculatorButton() {
-  const element = document.querySelector("#Caixa");
+function openCalculatorButton(id) {
+  const element = document.querySelector(`#${id}`);
   const label = element.querySelector("label");
   const openCalculator = document.createElement("button");
   openCalculator.className = "open-calculator-button";
-  openCalculator.addEventListener("click", () => {
+  openCalculator.addEventListener("click", (event) => {
+    const parent = event.target.parentNode.parentNode.parentNode
     const calculator = document.querySelector(".super-container-calculator");
     calculator.classList.remove("none");
-    getBoxValueAndAddAtCalculator();
+    calculator.setAttribute("data-target", `${id}`)
+    getBoxValueAndAddAtCalculator(parent);
   })
 
   openCalculator.innerHTML = `
@@ -82,5 +85,6 @@ function openCalculatorButton() {
 export default function renderMoneyBox() {
   createElement();
   addEventListenerAtComponents();
-  openCalculatorButton()
+  openCalculatorButton("Caixa");
+  openCalculatorButton("Retiradas")
 }

@@ -3,16 +3,21 @@ import { addAtRoot } from "../tools/domFunctions";
 const operators = [["1", "2", "3", "+"], ["4", "5", "6", "-"], ["7", "8", "9", "*"], ["/", "0", ".", "="]];
 
 function calculate() {
-  const display = document.querySelector(".display-input");
-  let value = eval(display.value || null)
 
+  const superContainer = document.querySelector(".super-container-calculator");
+  const containerInput = document.querySelector(`#${superContainer.getAttribute("data-target")}`);
+  const input = containerInput.querySelector("input")
+  const display = document.querySelector(".display-input");
+  
+  let value = eval(display.value || "")
+  input.value = `R$ ${String(value.toFixed(2)).replace(".", ",")}`
   display.value = value;
 }
 
 function insertValueAtDisplay(value) {
   const display = document.querySelector(".display-input");
   if (!display.value) {
-    display.value = box.value;
+    display.value = "";
   }
   display.value += value;
 
@@ -87,6 +92,7 @@ function digitalButtonsEvents() {
 function keyboardEvents() {
   const containerCalculator = document.querySelector(".super-container-calculator")
   document.addEventListener("keydown", (e) => {
+    e.preventDefault()
     const containerClasses = containerCalculator.classList;
     if (!containerClasses.contains("none")) {
 
@@ -116,10 +122,8 @@ function keyboardEvents() {
       }
       if(e.key === 'Escape'){
         const superContainer = document.querySelector(".super-container-calculator");
-        superContainer.classList.add("none")
-        
+        superContainer.classList.add("none") 
       }
-      console.log(e.key)
     }
   })
 }
