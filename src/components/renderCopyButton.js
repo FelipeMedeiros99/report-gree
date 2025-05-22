@@ -42,9 +42,9 @@ function generateReport(listOfDatas) {
 \`\`\`_____________________________\`\`\`
 📝 *Informações*
 • Devendo: 
-${listOfDatas[9].split("\n").map((text)=>convertTextToItalic(text)).join("")}
+${listOfDatas[listOfDatas.length - 2].split("\n").map((text)=>convertTextToItalic(text)).join("")}
 • Observações:  
-${listOfDatas[10].split("\n").map((text)=>convertTextToItalic(text)).join("")}  
+${listOfDatas[listOfDatas.length - 1].split("\n").map((text)=>convertTextToItalic(text)).join("")}  
 `
   navigator.clipboard.writeText(report)
 }
@@ -60,6 +60,7 @@ function copyInformations() {
   for (let text of textareas) {
     valuesReceived.push(text.value);
   }
+  console.log(valuesReceived)
 
   generateReport(valuesReceived)
 }
