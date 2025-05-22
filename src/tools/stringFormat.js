@@ -1,5 +1,5 @@
 export function convertTextToItalic(text){
-  return text.length>0?`_${text}_\n` :`\n`
+  return text.length>0?`_${text.trim()}_\n` :`\n`
 }
 
 export function dateFormat(numbers) {

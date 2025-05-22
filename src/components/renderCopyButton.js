@@ -60,8 +60,6 @@ function copyInformations() {
   for (let text of textareas) {
     valuesReceived.push(text.value);
   }
-  console.log(valuesReceived)
-
   generateReport(valuesReceived)
 }
 
