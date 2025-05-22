@@ -1,4 +1,5 @@
 import { addAtRoot } from "../tools/domFunctions";
+import { calculateTotalValue } from "./renderMoneyBox";
 
 const operators = [["1", "2", "3", "+"], ["4", "5", "6", "-"], ["7", "8", "9", "*"], ["/", "0", ".", "="]];
 
@@ -116,6 +117,7 @@ function keyboardEvents() {
 
       if (e.key === "Enter") {
         calculate()
+        calculateTotalValue()
       }
 
       if (e.key === "Delete") {

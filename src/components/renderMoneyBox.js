@@ -32,12 +32,10 @@ function createElement() {
   addAtRoot(total)
 }
 
-function calculateTotalValue() {
+export function calculateTotalValue() {
   const valueReceived = convertToFloat(document.querySelector("#Caixa").querySelector("input").value);
   const valueRemoved = convertToFloat(document.querySelector("#Retiradas").querySelector("input").value)
   const valueTotal = document.querySelector("#Caixa_enviado")
-  console.log(valueReceived)
-
   const total = valueReceived - valueRemoved
   valueTotal.value = `R$ ${String(total.toFixed(2)).replace(".", ",")}`;
 
