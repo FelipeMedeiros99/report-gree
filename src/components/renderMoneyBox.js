@@ -1,22 +1,23 @@
 import { addAtRoot } from "../tools/domFunctions";
 import { convertToFloat, filterNumbers } from "../tools/numberFunctions";
 
-function createElement(){
+
+function createElement() {
   const labels = ["Caixa", "Retiradas", "Caixa enviado"]
   let total;
 
   const container = document.createElement("div");
   container.className = "box-inputs-container";
-  
+
   for (const label of labels) {
-    if(label !== "Caixa enviado"){
+    if (label !== "Caixa enviado") {
       container.innerHTML += `
-        <div class="container-input financy-input-container">
+        <div class="container-input financy-input-container" id=${label}>
           <label for="${label}">${label}</label>
           <input type="text" id=${label} class="input-box" value="R$ 0,00"/>
         </div>
       `
-    }else{
+    } else {
       total = document.createElement("div");
       total.className = "container-input financy-input-container"
       const formatedLabel = label.replace(" ", "_");
@@ -25,7 +26,7 @@ function createElement(){
         <input type="text" id=${formatedLabel}  class="input-box" value="R$ 0,00"/>
       `
     }
-    
+
   }
   addAtRoot(container)
   addAtRoot(total)
@@ -45,14 +46,41 @@ function convertToMnoneyFormat(input) {
   calculateTotalValue()
 }
 
-function addEventListenerAtComponents(){
+function addEventListenerAtComponents() {
   const inputs = document.querySelectorAll(".financy-input-container .input-box");
-  for(let input of inputs){
-    input.addEventListener("input", ()=>convertToMnoneyFormat(input));
+  for (let input of inputs) {
+    input.addEventListener("input", () => convertToMnoneyFormat(input));
   }
+}
+
+function getBoxValueAndAddAtCalculator(){
+  const boxValue = document.querySelector("#Caixa").querySelector("input").value;
+  console.log("aqui : ", boxValue)
+  const display = document.querySelector(".display-input");
+  display.value = eval(boxValue.replace("R$","").trim().replace(",", "."));
+}
+
+function openCalculatorButton() {
+  const element = document.querySelector("#Caixa");
+  const label = element.querySelector("label");
+  const openCalculator = document.createElement("button");
+  openCalculator.className = "open-calculator-button";
+  openCalculator.addEventListener("click", () => {
+    const calculator = document.querySelector(".super-container-calculator");
+    calculator.classList.remove("none");
+    getBoxValueAndAddAtCalculator();
+  })
+
+  openCalculator.innerHTML = `
+  <span class="material-symbols-outlined">
+    calculate
+ </span>`;
+
+  label.appendChild(openCalculator);
 }
 
 export default function renderMoneyBox() {
   createElement();
   addEventListenerAtComponents();
+  openCalculatorButton()
 }

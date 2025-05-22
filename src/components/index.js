@@ -5,6 +5,7 @@ import renderCounterInputs from "./renderCounterInput";
 import renderLine from "./renderLine";
 import renderMoneyBox from "./renderMoneyBox";
 import renderTextAreaObservations from "./renderTextAreaObservations";
+import calculator from "./calculator";
 
 export default function  main() {
 
@@ -17,6 +18,7 @@ export default function  main() {
   renderLine();
   renderTextAreaObservations(); 
   renderCopyButton();
+  calculator();
 }
 
 main();
