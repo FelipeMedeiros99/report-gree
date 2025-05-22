@@ -10,6 +10,7 @@ function calculate() {
   const display = document.querySelector(".display-input");
   
   let value = eval(display.value || "")
+  if(value===Infinity) value = 0;
   input.value = `R$ ${String(value.toFixed(2)).replace(".", ",")}`
   display.value = value;
 }
