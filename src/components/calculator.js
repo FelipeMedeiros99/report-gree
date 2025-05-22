@@ -93,10 +93,10 @@ function digitalButtonsEvents() {
 function keyboardEvents() {
   const containerCalculator = document.querySelector(".super-container-calculator")
   document.addEventListener("keydown", (e) => {
-    e.preventDefault()
     const containerClasses = containerCalculator.classList;
     if (!containerClasses.contains("none")) {
-
+      
+      e.preventDefault()
       const display = document.querySelector(".display-input");
       if (!display.value) {
         display.value = "";
