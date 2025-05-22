@@ -288,5 +288,6 @@ button:hover{
   height: 2.25rem;
   width: 2.25rem;
   background-color: red !important;
+  border-radius: var(--border-radius);
   border-top-right-radius: 1rem; 
 }
