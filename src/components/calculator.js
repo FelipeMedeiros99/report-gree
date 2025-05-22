@@ -85,6 +85,7 @@ function digitalButtonsEvents() {
       button.addEventListener("click", () => insertValueAtDisplay(value));
     } else if (value === "=") {
       button.addEventListener("click", calculate);
+      button.addEventListener("click", calculateTotalValue);
     }
   }
 
