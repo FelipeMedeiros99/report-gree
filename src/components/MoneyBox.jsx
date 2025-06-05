@@ -19,10 +19,10 @@ export default function MoneyBox({ formData, setFormData }) {
   }
 
   useEffect(()=>{
-    const inflow = filterNumbers(formData.money.Caixa);
-    const outflow = filterNumbers(formData.money.Retiradas);
-    const total =  "R$ " + String((inflow - outflow/100).toFixed(2)).replace(".", ",");
-    if(total!==formData.money["Caixa enviado"]){
+    const inflow = filterNumbers(formData?.money?.Caixa);
+    const outflow = filterNumbers(formData?.money?.Retiradas);
+    const total =  "R$ " + String(((inflow - outflow)/100).toFixed(2)).replace(".", ",");
+    if(total!==formData?.money?.["Caixa enviado"]){
       const copy = {...formData};
       copy.money["Caixa enviado"] = total;
       setFormData({...copy})
@@ -39,7 +39,7 @@ export default function MoneyBox({ formData, setFormData }) {
             type="text"
             id={key}
             className="input-box"
-            value={formData.money[key]}
+            value={formData?.money[key]}
             onChange={key!=="Caixa enviado"?(e)=>handleValue(e, key):undefined}
           />
         </div>

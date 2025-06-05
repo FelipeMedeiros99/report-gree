@@ -1,8 +1,8 @@
 export default function RecepcionistForm({formData, setFormData}) {
   const getRecepcionistsNames = () => {
     let recepcionistList = localStorage.getItem("reportSystem");
-    if (!recepcionistList) localStorage.setItem("reportSystem", "[]");
-    return recepcionistList ? JSON.parse(recepcionistList).sort() : []
+    recepcionistList = JSON.parse(recepcionistList).recepcionistsNames.sort();
+    return recepcionistList 
   }
 
   const recepcionistList = getRecepcionistsNames();
@@ -12,7 +12,7 @@ export default function RecepcionistForm({formData, setFormData}) {
       <label htmlFor="recepcionist-name">Recepcionista</label>
       <div className="container-input-with-button">
         <input 
-          value={formData?.recepcionist} 
+          value={formData?.recepcionist || ""} 
           type="text" id="recepcionist-name" 
           list="recepcionists"
           onChange={(e)=>{setFormData({...formData, recepcionist: e.target.value})}}
@@ -21,7 +21,7 @@ export default function RecepcionistForm({formData, setFormData}) {
       </div>
 
       <datalist id="recepcionists">
-        {recepcionistList.map((recep) => (<option>{recep}</option>))}
+        {recepcionistList.map((recep) => (<option key={recep}>{recep}</option>))}
       </datalist>
     </div>
   )

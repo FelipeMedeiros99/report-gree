@@ -5,7 +5,7 @@ export default function Calendar({formData, setFormData}) {
       <label>Data</label>
       <input 
         type="date" 
-        value={formData?.date} 
+        value={formData?.date || ""} 
         onChange={(e)=>setFormData({...formData, date: e.target.value})}
       />
     </div>

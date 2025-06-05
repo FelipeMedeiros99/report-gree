@@ -179,12 +179,24 @@ button:hover{
   width: var(--button-width);
 }
 
+.btn-container{
+  display: flex;
+  gap: 0.5rem;
+}
 
-.copy-button{
+.btn{
   height: 2rem;
   width: 7rem;
   border-radius: var(--border-radius);
   font-weight: 700;
+}
+
+.btn.copy{
+
+}
+
+.btn.clear{
+  background-color: red;
 }
 
 .open-calculator-button{
