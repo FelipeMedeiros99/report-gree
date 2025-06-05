@@ -4,6 +4,7 @@ import RecepcionistForm from "./RecepcionistForm";
 import Calendar from "./Calendar";
 import CounterInput from "./CounterInput";
 import MoneyBox from "./MoneyBox";
+import Observations from "./Observations";
 
 import getDateToday from "../tools/getDateToday";
 
@@ -13,6 +14,8 @@ function App() {
     date: getDateToday(),
     counterInputs: {"Ocupação total": 50, "Previsão reservas": 0, "Check-in": 0, "Renovação": 0},
     money: { Caixa: "R$ 0,00", Retiradas: "R$ 0,00", "Caixa enviado": "R$ 0,00" },
+    debtors: "",
+    observations: ""
   });
 
   console.log(formData)
@@ -24,6 +27,9 @@ function App() {
       <CounterInput formData={formData} setFormData={setFormData} />
       <hr />
       <MoneyBox formData={formData} setFormData={setFormData} />
+      <hr />
+      <Observations formData={formData} setFormData={setFormData} />
+
 
     </div>
   );
