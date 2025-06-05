@@ -9,9 +9,9 @@ export default function CounterInput({ formData, setFormData }) {
         "Check-in": 0,
         "Renovação": 0
       }
-      setFormData({...formData, counterInputs})
+      setFormData({...formData, counterInputs: counterInputs})
     }
-  }, []);
+  }, [formData]);
 
   const changeInputValue = (key, value) => {
     const newValue = Number(formData.counterInputs[key]) + value;
