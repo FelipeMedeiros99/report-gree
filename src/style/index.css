@@ -33,7 +33,7 @@
 /* ======================== */
 /* 🔁 Reset e Base         */
 /* ======================== */
-html, body, .root {
+html, body, #root {
   height: 100%;
   width: 100%;
 }
@@ -48,7 +48,7 @@ body {
 /* ======================== */
 /* 📦 Estrutura Principal  */
 /* ======================== */
-.root {
+#root {
   display: flex;
   flex-direction: column;
   align-items: center;
