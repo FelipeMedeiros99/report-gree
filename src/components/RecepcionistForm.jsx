@@ -1,6 +1,10 @@
-import { getRecepcionistsNames } from "../tools/storageFunctions";
-
 export default function RecepcionistForm({formData, setFormData}) {
+  const getRecepcionistsNames = () => {
+    let recepcionistList = localStorage.getItem("reportSystem");
+    if (!recepcionistList) localStorage.setItem("reportSystem", "[]");
+    return recepcionistList ? JSON.parse(recepcionistList).sort() : []
+  }
+
   const recepcionistList = getRecepcionistsNames();
 
   return (
