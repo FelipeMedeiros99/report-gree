@@ -73,6 +73,7 @@ body {
 
 .box-inputs-container {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   width: var(--max-box-width);
 }
