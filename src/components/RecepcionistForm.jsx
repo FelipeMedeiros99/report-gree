@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { getRecepcionistsNames } from "../tools/storageFunctions";
 
 export default function RecepcionistForm({formData, setFormData}) {
