@@ -5,6 +5,7 @@ import Calendar from "./Calendar";
 import CounterInput from "./CounterInput";
 import MoneyBox from "./MoneyBox";
 import Observations from "./Observations";
+import Calculator from "./Calculator";
 
 import getDateToday from "../tools/getDateToday";
 import { convertTextToItalic, formatDate } from "../tools/stringFormat";
@@ -12,20 +13,25 @@ import { getLocalStorageData, getRecepcionistsNames, saveNewRecepcionist } from 
 
 function App() {
   const [buttonText, setButtonText] = useState("Copiar");
+  const [calculatorVisibility, setCalculatorVisibility] = useState("none");
   const [formData, setFormData] = useState(() => {
     let data = localStorage.getItem("reportSystem");
-    if (!data) {
-      data = {
-        recepcionistsNames: [], formData: {
-          recepcionist: "",
-          date: getDateToday(),
-          counterInputs: { "Ocupação total": 50, "Previsão reservas": 0, "Check-in": 0, "Renovação": 0 },
-          money: { Caixa: "R$ 0,00", Retiradas: "R$ 0,00", "Caixa enviado": "R$ 0,00" },
-          debtors: "",
-          observations: ""
-        }
+    const defaultData = {
+      recepcionistsNames: [], formData: {
+        recepcionist: "",
+        date: getDateToday(),
+        counterInputs: { "Ocupação total": 50, "Previsão reservas": 0, "Check-in": 0, "Renovação": 0 },
+        money: { Caixa: "R$ 0,00", Retiradas: "R$ 0,00", "Caixa enviado": "R$ 0,00" },
+        debtors: "",
+        observations: ""
       }
+    }
+    if (!data) {
       localStorage.setItem("reportSystem", JSON.stringify(data))
+      data = defaultData;
+    }else if(!JSON.stringify(data).recepcionistsNames || !JSON.stringify(data).formData){
+      localStorage.setItem("reportSystem", JSON.stringify(defaultData))
+      data = defaultData;
     } else {
       data = JSON.parse(data)
     }
@@ -98,6 +104,8 @@ function App() {
         <button onClick={generateReportText} className="btn copy">{buttonText}</button>
         <button onClick={clearForms} className="btn clear">Limpar</button>
       </div>
+
+      <Calculator formData={formData} setFormData={setFormData} calculatorVisibility={calculatorVisibility} setCalculatorVisibility={setCalculatorVisibility}/>
 
     </React.Fragment>
   );
