@@ -1,13 +1,14 @@
-const storageName = 'reportSystem'
+const storageName = 'reportSystem';
 
-export function getRecepcionistsNames() {
-  let recepcionistList = localStorage.getItem(storageName);
-  if (!recepcionistList) localStorage.setItem(storageName, "[]");
-  return recepcionistList ? JSON.parse(recepcionistList).sort() : "[]"
+export function getLocalStorageData() {
+  let localStorageData = localStorage.getItem(storageName);
+  localStorageData = JSON.parse(localStorageData);
+  return localStorageData
 }
 
 export function saveNewRecepcionist(name) {
-  const names = getRecepcionistsNames();
-  names.push(name)
-  localStorage.setItem(storageName, JSON.stringify(names))
+  const data = getLocalStorageData();
+  const recepcionistsNames = data.recepcionistsNames;
+  recepcionistsNames.push(name);
+  localStorage.setItem(storageName, JSON.stringify({...data, recepcionistsNames}))
 }

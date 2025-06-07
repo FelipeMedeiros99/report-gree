@@ -35,7 +35,7 @@
 /* ======================== */
 /* 🔁 Reset e Base         */
 /* ======================== */
-html, body, .root {
+html, body, #root {
   height: 100%;
   width: 100%;
 }
@@ -50,7 +50,7 @@ body {
 /* ======================== */
 /* 📦 Estrutura Principal  */
 /* ======================== */
-.root {
+#root {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -73,6 +73,7 @@ body {
 
 .box-inputs-container {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   width: var(--max-box-width);
 }
@@ -180,12 +181,28 @@ button:hover{
   width: var(--button-width);
 }
 
+.btn-container{
+  display: flex;
+  gap: 0.5rem;
+}
 
-.copy-button{
+.btn{
   height: 2rem;
   width: 7rem;
   border-radius: var(--border-radius);
   font-weight: 700;
+}
+
+/* .btn.copy{
+
+} */
+
+.input-button{
+  cursor: pointer;
+}
+
+.btn.clear{
+  background-color: red;
 }
 
 .open-calculator-button{
