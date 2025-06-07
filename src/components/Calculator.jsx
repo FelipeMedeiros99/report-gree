@@ -79,7 +79,7 @@ export default function Calculator({ formData, setFormData, calculatorSettings, 
           <input className="display-input" type="button" value={calculatorValue}/>
           <input type="button" className="clear-input" value="C" onClick={()=>setCalculatorValue("")}/>
           {operators.map((row, index) => (
-            <div key={index}>
+            <div key={index} className="calculator-row">
               {row.map((simbol) => (
                 <input key={simbol} type="button" className="input-button" value={simbol} onClick={()=>handleValue(simbol)}/>
               ))}
