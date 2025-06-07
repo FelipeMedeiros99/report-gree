@@ -46,7 +46,7 @@ function App() {
       saveNewRecepcionist(selectedRecepcionist)
     }
   }
-  
+
   const clearForms = () => {
     setFormData({
       recepcionist: "",
@@ -91,7 +91,6 @@ function App() {
   useEffect(() => {
     const recepcionistsNames = getLocalStorageData().recepcionistsNames;
     localStorage.setItem("reportSystem", JSON.stringify({ recepcionistsNames, formData }))
-    console.log(JSON.parse(localStorage.getItem("reportSystem")))
   }, [formData])
 
   return (
