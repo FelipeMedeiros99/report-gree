@@ -30,7 +30,6 @@ export default function Calculator({ formData, setFormData, calculatorSettings, 
   useEffect(()=>{
     const keyDown = (e) =>{
       const value = e.key
-      console.log(value)
 
       if(/\d/.test(value) || ["+", "-", "/", "*", "."].indexOf(value) !== -1){
         setCalculatorValue(lastValue => lastValue + value)
