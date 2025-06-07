@@ -16,10 +16,12 @@ export default function Calculator({ formData, setFormData, calculatorSettings, 
         result = lastValue
       }finally{
         const formatedValue = Number(result).toFixed(2)
-        if(!isNaN(formatedValue)){
+        if(!isNaN(formatedValue) && formatedValue !== "Infinity"){
           copy.money[calculatorSettings.key] = "R$ " + String(Number(result).toFixed(2)).replace(".", ",");
           setFormData({...copy})
           return result;
+        }else{
+          alert("Erro no calculo, verifique!")
         }
       }
     })
