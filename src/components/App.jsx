@@ -13,7 +13,7 @@ import { getLocalStorageData, getRecepcionistsNames, saveNewRecepcionist } from 
 
 function App() {
   const [buttonText, setButtonText] = useState("Copiar");
-  const [calculatorVisibility, setCalculatorVisibility] = useState("none");
+  const [calculatorSettings, setCalculatorSettings] = useState({ visibility: false, key: "" });
   const [formData, setFormData] = useState(() => {
     let data = localStorage.getItem("reportSystem");
     const defaultData = {
@@ -29,7 +29,7 @@ function App() {
     if (!data) {
       localStorage.setItem("reportSystem", JSON.stringify(data))
       data = defaultData;
-    }else if(!JSON.stringify(data).recepcionistsNames || !JSON.stringify(data).formData){
+    } else if (!JSON.parse(data).recepcionistsNames || !JSON.parse(data).formData) {
       localStorage.setItem("reportSystem", JSON.stringify(defaultData))
       data = defaultData;
     } else {
@@ -46,16 +46,16 @@ function App() {
       saveNewRecepcionist(selectedRecepcionist)
     }
   }
-
-  const clearForms = ()=>{
+  
+  const clearForms = () => {
     setFormData({
-        recepcionist: "",
-        date: getDateToday(),
-        counterInputs: { "Ocupação total": 50, "Previsão reservas": 0, "Check-in": 0, "Renovação": 0 },
-        money: { Caixa: "R$ 0,00", Retiradas: "R$ 0,00", "Caixa enviado": "R$ 0,00" },
-        debtors: "",
-        observations: ""
-      })
+      recepcionist: "",
+      date: getDateToday(),
+      counterInputs: { "Ocupação total": 50, "Previsão reservas": 0, "Check-in": 0, "Renovação": 0 },
+      money: { Caixa: "R$ 0,00", Retiradas: "R$ 0,00", "Caixa enviado": "R$ 0,00" },
+      debtors: "",
+      observations: ""
+    })
   }
 
   const generateReportText = () => {
@@ -91,6 +91,7 @@ function App() {
   useEffect(() => {
     const recepcionistsNames = getLocalStorageData().recepcionistsNames;
     localStorage.setItem("reportSystem", JSON.stringify({ recepcionistsNames, formData }))
+    console.log(JSON.parse(localStorage.getItem("reportSystem")))
   }, [formData])
 
   return (
@@ -98,14 +99,16 @@ function App() {
       <RecepcionistForm formData={formData} setFormData={setFormData} />
       <Calendar formData={formData} setFormData={setFormData} /><hr />
       <CounterInput formData={formData} setFormData={setFormData} /><hr />
-      <MoneyBox formData={formData} setFormData={setFormData} /><hr />
+      <MoneyBox formData={formData} setFormData={setFormData} setCalculatorSettings={setCalculatorSettings} /><hr />
       <Observations formData={formData} setFormData={setFormData} />
       <div className="btn-container">
         <button onClick={generateReportText} className="btn copy">{buttonText}</button>
         <button onClick={clearForms} className="btn clear">Limpar</button>
       </div>
 
-      <Calculator formData={formData} setFormData={setFormData} calculatorVisibility={calculatorVisibility} setCalculatorVisibility={setCalculatorVisibility}/>
+      {calculatorSettings.visibility &&
+        <Calculator formData={formData} setFormData={setFormData} calculatorSettings={calculatorSettings} setCalculatorSettings={setCalculatorSettings} />
+      }
 
     </React.Fragment>
   );
