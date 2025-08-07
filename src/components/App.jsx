@@ -27,7 +27,7 @@ function App() {
       }
     }
     if (!data) {
-      localStorage.setItem("reportSystem", JSON.stringify(data))
+      localStorage.setItem("reportSystem", JSON.stringify(defaultData))
       data = defaultData;
     } else if (!JSON.parse(data).recepcionistsNames || !JSON.parse(data).formData) {
       localStorage.setItem("reportSystem", JSON.stringify(defaultData))
