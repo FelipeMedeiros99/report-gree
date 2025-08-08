@@ -3,7 +3,8 @@ import { getDateToday } from "./dateTools.js";
 const storageName = 'reportSystem';
 
 export function getLocalStorageData() {
-  let data = localStorage.getItem("reportSystem");
+
+  let data = localStorage.getItem(storageName);
   const defaultData = {
     recepcionistsNames: [], formData: {
       recepcionist: "",
@@ -15,10 +16,10 @@ export function getLocalStorageData() {
     }
   }
   if (!data) {
-    localStorage.setItem("reportSystem", JSON.stringify(defaultData))
+    localStorage.setItem(storageName, JSON.stringify(defaultData))
     data = defaultData;
   } else if (!JSON.parse(data).recepcionistsNames || !JSON.parse(data).formData) {
-    localStorage.setItem("reportSystem", JSON.stringify(defaultData))
+    localStorage.setItem(storageName, JSON.stringify(defaultData))
     data = defaultData;
   } else {
     data = JSON.parse(data)
@@ -36,4 +37,8 @@ export function saveNewRecepcionist(name) {
     localStorage.setItem(storageName, JSON.stringify({ ...data, recepcionistsNames }))
   }
   
+}
+
+export function updateLocalStorage(key, data){
+  localStorage.setItem(storageName, JSON.stringify({...getLocalStorageData(), [key]: data}))
 }

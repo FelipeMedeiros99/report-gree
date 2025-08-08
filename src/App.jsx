@@ -8,15 +8,14 @@ import Observations from "./components/Observations";
 import Calculator from "./components/Calculator";
 import Buttons from "./components/Buttons";
 
-import { getLocalStorageData } from "./tools/localStorageTools.js";
+import { getLocalStorageData, updateLocalStorage } from "./tools/localStorageTools.js";
 
 function App() {
   const [calculatorSettings, setCalculatorSettings] = useState({ visibility: false, key: "" });
   const [formData, setFormData] = useState(getLocalStorageData().formData)
 
   useEffect(() => {
-    const recepcionistsNames = getLocalStorageData().recepcionistsNames;
-    localStorage.setItem("reportSystem", JSON.stringify({ recepcionistsNames, formData }))
+    updateLocalStorage("formData", formData)
   }, [formData])
 
   return (
