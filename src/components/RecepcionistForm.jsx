@@ -1,27 +1,29 @@
-export default function RecepcionistForm({formData, setFormData}) {
-  const getRecepcionistsNames = () => {
-    let recepcionistList = localStorage.getItem("reportSystem");
-    recepcionistList = JSON.parse(recepcionistList).recepcionistsNames.sort();
-    return recepcionistList 
+import { getLocalStorageData } from "../tools/localStorageTools.js";
+
+export default function RecepcionistForm({ formData, setFormData }) {
+  const { recepcionistsNames } = getLocalStorageData();
+  const { recepcionist } = formData;
+
+  const clearRecepcionistName = () => {
+    setFormData({ ...formData, recepcionist: "" });
   }
 
-  const recepcionistList = getRecepcionistsNames();
+  const updateRecepcionistName = (e) => {
+    setFormData({ ...formData, recepcionist: e.target.value });
+  }
 
   return (
     <div className="recepcionist-container container-input">
+
       <label htmlFor="recepcionist-name">Recepcionista</label>
+      
       <div className="container-input-with-button">
-        <input 
-          value={formData?.recepcionist || ""} 
-          type="text" id="recepcionist-name" 
-          list="recepcionists"
-          onChange={(e)=>{setFormData({...formData, recepcionist: e.target.value})}}
-        />
-        <img src="assets/image.png" className="clearButton" onClick={()=>setFormData({...formData, recepcionist: ""})}/>
+        <input value={recepcionist} list="recepcionists" onChange={updateRecepcionistName} />
+        <img src="assets/image.png" className="clearButton" onClick={clearRecepcionistName} />
       </div>
 
       <datalist id="recepcionists">
-        {recepcionistList.map((recep) => (<option key={recep}>{recep}</option>))}
+        {recepcionistsNames.map((recep) => (<option key={recep}>{recep}</option>))}
       </datalist>
     </div>
   )
