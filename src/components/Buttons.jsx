@@ -28,7 +28,7 @@ export default function Buttons({ formData, setFormData }) {
     setFormData({
       recepcionist: "",
       date: getDateToday(),
-      counterInputs: { "Ocupação total": 50, "Previsão reservas": 0, "Check-in": 0, "Renovação": 0 },
+      counterInputs: { "Ocupação total": formData.counterInputs["Ocupação total"], "Previsão reservas": 0, "Check-in": 0, "Renovação": 0 },
       money: { Caixa: "R$ 0,00", Retiradas: "R$ 0,00", "Caixa enviado": "R$ 0,00" },
       debtors: "",
       observations: ""
