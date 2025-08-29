@@ -4,7 +4,7 @@ export default function CounterInput({ formData, setFormData }) {
   const inputkeys = Object.keys(counterInputs);
 
   const changeInputValue = (key, value) => {
-    const newValue = counterInputs[key] + value;
+    const newValue = Number(counterInputs[key]) + value;
     const copyFormData = { ...formData }
     copyFormData.counterInputs[key] = newValue > 0 ? newValue : 0
     setFormData({ ...copyFormData })
