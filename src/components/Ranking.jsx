@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { CiEdit } from "react-icons/ci";
+import { MdEdit } from "react-icons/md";
 import { FaRegTrashAlt } from "react-icons/fa";
 
 import { getLocalStorageData, updateLocalStorage } from "../tools/localStorageTools"
@@ -83,8 +83,8 @@ export default function Ranking() {
               <td>{convertToMoneyFormat(recepcionistValue.value)}</td>
               <td>{recepcionistValue.updateAt}</td>
               <td>
-                <CiEdit onClick={() => edit(key)} />
-                <FaRegTrashAlt onClick={() => remove(key)} />
+                <MdEdit title="Editar" className="icon" onClick={() => edit(key)} />
+                <FaRegTrashAlt title="Deletar" className="icon" onClick={() => remove(key)} />
               </td>
             </tr>
           ))}
