@@ -83,7 +83,7 @@ export default function Ranking() {
               <td>{convertToMoneyFormat(recepcionistValue.value)}</td>
               <td>{recepcionistValue.updateAt}</td>
               <td>
-                <MdEdit title="Editar" className="icon" onClick={() => edit(key)} />
+                <MdEdit title="Editar saldo" className="icon" onClick={() => edit(key)} />
                 <FaRegTrashAlt title="Deletar" className="icon" onClick={() => remove(key)} />
               </td>
             </tr>
