@@ -49,10 +49,13 @@ export default function Ranking() {
   }
 
   const remove = (key) => {
-    const copy = { ...data }
-    copy.recepcionistValues.splice(key, 1)
-    setData(copy)
-    updateLocalStorage("recepcionistValues", copy.recepcionistValues)
+    const confirm = window.confirm(`Deseja apagar o usuário ${data.recepcionistValues[key].name}?`)
+    if(confirm){
+      const copy = { ...data }
+      copy.recepcionistValues.splice(key, 1)
+      setData(copy)
+      updateLocalStorage("recepcionistValues", copy.recepcionistValues)
+    }
   }
 
   const edit = (key) => {
