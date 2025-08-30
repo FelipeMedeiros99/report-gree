@@ -29,7 +29,9 @@ export default function Ranking() {
       setData(getLocalStorageData())
       setModal({ value: "", visibility: false, id: Date.now() })
     } else {
-      const copy = data.recepcionistValues;
+      const copy = data.recepcionistValues.sort((a, b)=>{
+        return b.value - a.value
+      });
       for (let element of copy) {
         if (element.id === modal.id) {
           try {
@@ -69,6 +71,7 @@ export default function Ranking() {
         </caption>
         <thead>
           <tr>
+            <th>#</th>
             <th>nome</th>
             <th>saldo</th>
             <th>atualizado em</th>
@@ -79,6 +82,7 @@ export default function Ranking() {
 
           {data.recepcionistValues.map((recepcionistValue, key) => (
             <tr>
+              <td>{key+1}°</td>
               <td>{recepcionistValue.name}</td>
               <td>{convertToMoneyFormat(recepcionistValue.value)}</td>
               <td>{recepcionistValue.updateAt}</td>
