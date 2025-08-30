@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 
+import Ranking from "./components/Ranking.jsx";
 import RecepcionistForm from "./components/RecepcionistForm";
 import Calendar from "./components/Calendar";
 import CounterInput from "./components/CounterInput";
@@ -26,6 +27,7 @@ function App() {
       <MoneyBox formData={formData} setFormData={setFormData} setCalculatorSettings={setCalculatorSettings} /><hr />
       <Observations formData={formData} setFormData={setFormData} />
       <Buttons formData={formData} setFormData={setFormData}/>
+      <Ranking />
 
       {calculatorSettings.visibility &&
         <Calculator formData={formData} setFormData={setFormData} calculatorSettings={calculatorSettings} setCalculatorSettings={setCalculatorSettings} />

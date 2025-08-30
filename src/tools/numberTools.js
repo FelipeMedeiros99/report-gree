@@ -7,11 +7,14 @@ export function convertToFloat(value) {
 }
 
 export function convertToMoneyFormat(value){
-  const filteredNumbers = filterNumbers(value)/100
+
+  if(String(value).includes(",") || String(value).includes(".")){
+    value = filterNumbers(value)/100
+  }
   const moneyFormat = new Intl.NumberFormat("pt-BR", {
     style: "currency", 
     currency: "BRL"
-  }).format(filteredNumbers);
+  }).format(value);
   
   return moneyFormat;
 }

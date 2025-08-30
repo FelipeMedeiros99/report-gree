@@ -6,7 +6,9 @@ export function getLocalStorageData() {
 
   let data = localStorage.getItem(storageName);
   const defaultData = {
-    recepcionistsNames: [], formData: {
+    recepcionistsNames: [],
+    recepcionistValues: [],
+    formData: {
       recepcionist: "",
       date: getDateToday(),
       counterInputs: { "Ocupação total": 50, "Previsão reservas": 0, "Check-in": 0, "Renovação": 0 },
