@@ -36,6 +36,7 @@ export default function Ranking() {
         if (element.id === modal.id) {
           try {
             element.value = Number(evaluate(String(modal.value).replace(",", "."))).toFixed(2)
+            element.updateAt = formatedDate;
           } catch (e) {
             console.log(e)
             alert("Erro de calculo")
