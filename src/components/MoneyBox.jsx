@@ -21,7 +21,7 @@ export default function MoneyBox({ formData, setFormData, setCalculatorSettings 
   useEffect(() => {
     const inflow = filterNumbers(money?.Caixa)/100;
     const outflow = filterNumbers(money?.Retiradas)/100;  
-    const total = convertToMoneyFormat((inflow - outflow).toFixed(2));
+    const total = convertToMoneyFormat(String(Number(inflow - outflow).toFixed(2)));
 
     if (total !== money["Caixa enviado"]) {
       const copy = { ...formData };

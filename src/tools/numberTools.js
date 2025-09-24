@@ -7,7 +7,6 @@ export function convertToFloat(value) {
 }
 
 export function convertToMoneyFormat(value){
-
   if(String(value).includes(",") || String(value).includes(".")){
     value = filterNumbers(value)/100
   }
