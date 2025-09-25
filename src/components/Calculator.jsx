@@ -1,9 +1,14 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { evaluate } from "mathjs";
+import { convertToFloat, filterNumbers } from "../tools/numberTools";
 
 export default function Calculator({ formData, setFormData, calculatorSettings, setCalculatorSettings }) {
-  const operators = [["1", "2", "3", "+"], ["4", "5", "6", "-"], ["7", "8", "9", "*"], ["/", "0", ".", "="]];
-  const [calculatorValue, setCalculatorValue] = useState(evaluate(formData.money[calculatorSettings.key].replace(",", ".").replace("R$", "").trim()))
+  const operators = [["1", "2", "3", "+"], ["4", "5", "6", "-"], ["7", "8", "9", "*"], ["/", "0", ".", "="]];  
+
+  const [calculatorValue, setCalculatorValue] = useState(()=>{
+    return `${convertToFloat(formData.money[calculatorSettings.key])}`
+  })
+
   const container = useRef(null)
 
   const calculate = () => {
@@ -11,9 +16,14 @@ export default function Calculator({ formData, setFormData, calculatorSettings, 
     setCalculatorValue(lastValue => {
       let result;
       try{
-        result = String(evaluate(lastValue));
+        if(lastValue){
+          result = String(evaluate(lastValue));
+        }else{
+          result = 0
+        }
       }catch(e){
         result = lastValue
+        console.log(e)
       }finally{
         const formatedValue = Number(result).toFixed(2)
         if(!isNaN(formatedValue) && formatedValue !== "Infinity"){
@@ -21,7 +31,7 @@ export default function Calculator({ formData, setFormData, calculatorSettings, 
           setFormData({...copy})
           return result;
         }else{
-          alert("Erro no calculo, verifique!")
+          alert("Erro no calculo, verifique")
         }
       }
     })
@@ -34,7 +44,7 @@ export default function Calculator({ formData, setFormData, calculatorSettings, 
       if(/\d/.test(value) || ["+", "-", "/", "*", "."].indexOf(value) !== -1){
         setCalculatorValue(lastValue => lastValue + value)
       }else if(value === "Backspace"){
-        setCalculatorValue(lastValue=> lastValue.slice(0, lastValue.length -1))
+        setCalculatorValue(lastValue=> String(lastValue).slice(0, String(lastValue).length -1))
       }else if(value === "Escape"){
         setCalculatorSettings({...calculatorSettings, visibility: false})
       }else if(value === "Enter"){
@@ -76,8 +86,10 @@ export default function Calculator({ formData, setFormData, calculatorSettings, 
       <div className="container-calculator" ref={container}>
         <button className="button-close-calculator" onClick={()=>{setCalculatorSettings({visibility: false, key: ""})}}>X</button>
         <div className="container-display">
+          
           <input className="display-input" type="button" value={calculatorValue}/>
           <input type="button" className="clear-input" value="C" onClick={()=>setCalculatorValue("")}/>
+          
           {operators.map((row, index) => (
             <div key={index} className="calculator-row">
               {row.map((simbol) => (
@@ -85,6 +97,7 @@ export default function Calculator({ formData, setFormData, calculatorSettings, 
               ))}
             </div>
           ))}
+
         </div>
       </div>
     </div>
